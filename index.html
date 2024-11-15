@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zach's Wiki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9;
+        }
+        
+        .sun-icon {
+            width: 24px;
+            height: 24px;
+            color: #fb923c;
+        }
+        
+        .content-card {
+            transition: transform 0.2s;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .notify-button {
+            background-color: #fb923c;
+            transition: background-color 0.2s;
+        }
+
+        .notify-button:hover {
+            background-color: #f97316;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-8">
+        <!-- Header -->
+        <header class="max-w-4xl mx-auto mb-12">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <h1 class="text-3xl text-gray-800 font-serif">Zach's Wiki</h1>
+                </div>
+                <div class="bg-gray-100 px-4 py-1 rounded-full">
+                    <span class="text-gray-600">Coming Soon</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-4xl mx-auto">
+            <div class="space-y-8">
+                <h2 class="text-xl text-gray-600">
+                    Welcome to my space
+                </h2>
+                
+                <!-- Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 card-grid">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 content-card">
+                        <div class="w-8 h-8 bg-gray-100 rounded-full mb-4"></div>
+                        <div class="h-4 bg-gray-100 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-100 rounded w-1/2"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 content-card">
+                        <div class="w-8 h-8 bg-gray-100 rounded-full mb-4"></div>
+                        <div class="h-4 bg-gray-100 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-100 rounded w-1/2"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 content-card">
+                        <div class="w-8 h-8 bg-gray-100 rounded-full mb-4"></div>
+                        <div class="h-4 bg-gray-100 rounded w-3/4 mb-2"></div>
+                        <div class="h-4 bg-gray-100 rounded w-1/2"></div>
+                    </div>
+                </div>
+
+                <!-- Email Signup -->
+                <div class="mt-12 bg-white p-8 rounded-lg border border-gray-100">
+                    <h3 class="text-lg text-gray-800 mb-4">Stay Updated</h3>
+                    <form id="emailForm" action="https://formspree.io/f/xldenvwg" method="POST" class="flex flex-col md:flex-row gap-4">
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Enter your email"
+                            class="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-200"
+                            required
+                        >
+                        <button type="submit" class="notify-button px-6 py-2 text-white rounded-lg">
+                            Notify Me
+                        </button>
+                    </form>
+                    <p id="thankYouMessage" class="text-green-600 mt-4 hidden">Thank you for subscribing! I'll keep you updated.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="max-w-4xl mx-auto mt-16 pt-8 border-t border-gray-200">
+            <p class="text-gray-500 text-sm">
+                © <script>document.write(new Date().getFullYear())</script> Zach's Wiki. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Form handling script -->
+    <script>
+        const form = document.getElementById('emailForm');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    form.style.display = 'none';
+                    thankYouMessage.classList.remove('hidden');
+                } else {
+                    console.error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
