@@ -9,9 +9,70 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
         
+        :root {
+            color-scheme: dark light;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fafaf9;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #e5e5e5;
+            }
+            
+            .content-card {
+                background-color: #262626 !important;
+                border-color: #404040 !important;
+            }
+            
+            .notify-button {
+                background-color: #c2410c;
+            }
+            
+            .notify-button:hover {
+                background-color: #ea580c;
+            }
+            
+            input {
+                background-color: #262626;
+                border-color: #404040;
+                color: #e5e5e5;
+            }
+            
+            input:focus {
+                border-color: #ea580c;
+            }
+            
+            .bg-white {
+                background-color: #262626 !important;
+            }
+            
+            .border-gray-100 {
+                border-color: #404040 !important;
+            }
+            
+            .text-gray-800 {
+                color: #e5e5e5 !important;
+            }
+            
+            .text-gray-600 {
+                color: #d1d1d1 !important;
+            }
+            
+            .text-gray-500 {
+                color: #a3a3a3 !important;
+            }
+            
+            .bg-gray-100 {
+                background-color: #404040 !important;
+            }
+            
+            .border-gray-200 {
+                border-color: #404040 !important;
+            }
         }
         
         .sun-icon {
@@ -29,12 +90,7 @@
         }
 
         .notify-button {
-            background-color: #fb923c;
             transition: background-color 0.2s;
-        }
-
-        .notify-button:hover {
-            background-color: #f97316;
         }
 
         @media (max-width: 768px) {
