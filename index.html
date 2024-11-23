@@ -244,10 +244,109 @@
 
                     <!-- Second Card (Placeholder) -->
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 content-card">
-                        <div class="w-8 h-8 bg-gray-100 rounded-full mb-4"></div>
-                        <div class="h-4 bg-gray-100 rounded w-3/4 mb-2"></div>
-                        <div class="h-4 bg-gray-100 rounded w-1/2"></div>
+                        <div class="console-preview">
+                            <div class="console-header">
+                                <span style="color: #4A9BF5">console</span>
+                                <span class="beta-badge">Beta</span>
+                            </div>
+                            <div class="console-content">
+                                <div class="console-line">
+                                    <span class="line-icon">⯆</span>
+                                    <span style="color: #C586C0">Delete tweets. Start...</span>
+                                </div>
+                                <div class="console-line">
+                                    <span class="line-icon">⯆</span>
+                                    <span style="color: #4A9BF5">Promise</span>
+                                    <span style="color: #CCCCCC">{</span><span style="color: #9CDCFE">status</span><span style="color: #CCCCCC">: </span>
+                                    <span style="color: #CE9178">"pending"</span><span style="color: #CCCCCC">}</span>
+                                    <span style="color: #CCCCCC"> = </span>
+                                    <span style="color: #9CDCFE">$1</span>
+                                </div>
+                                <div class="console-line">
+                                    <span class="line-icon">⯆</span>
+                                    <span style="color: #4EC9B0">Deleted 1 tweets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 bg-gray-100 rounded-full mb-4 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" class="w-5 h-5">
+                                <path 
+                                    fill="currentColor" 
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                />
+                            </svg>
+                        </div>
+                        <div class="text-gray-800 font-medium mb-1">X Scrubber</div>
+                        <div class="text-gray-600 text-sm">Browser-Based Tweet Scrubber</div>
                     </div>
+                    
+                    <style>
+                    /* Console preview styles */
+                    .console-preview {
+                        display: none;
+                        position: absolute;
+                        top: -160px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 380px;
+                        background-color: #1e1e1e;
+                        border-radius: 8px;
+                        border: 1px solid #333;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                        z-index: 10;
+                        font-family: 'Consolas', 'Monaco', monospace;
+                        font-size: 13px;
+                        line-height: 1.5;
+                    }
+                    
+                    .console-preview::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid #1e1e1e;
+                    }
+                    
+                    .content-card:hover .console-preview {
+                        display: block;
+                    }
+                    
+                    .console-header {
+                        padding: 12px 15px;
+                        border-bottom: 1px solid #333;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    
+                    .beta-badge {
+                        background-color: #333;
+                        color: #999;
+                        padding: 2px 8px;
+                        border-radius: 12px;
+                        font-size: 12px;
+                    }
+                    
+                    .console-content {
+                        padding: 12px 15px;
+                    }
+                    
+                    .console-line {
+                        padding: 2px 0;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                    
+                    .line-icon {
+                        color: #666;
+                        font-size: 12px;
+                        width: 12px;
+                    }
+                    </style>
 
                     <!-- Third Card (Placeholder) -->
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 content-card">
